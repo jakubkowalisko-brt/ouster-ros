@@ -119,8 +119,11 @@ class OusterCloud : public OusterProcessingNodeBase {
                 info, os_tf_bcast.point_cloud_frame_id(),
                 os_tf_bcast.apply_lidar_to_sensor_transform(),
                 [this](PointCloudProcessor::OutputType msgs) {
-                    for (size_t i = 0; i < msgs.size(); ++i)
+                    RCLCPP_INFO(get_logger(), "handling message");
+                    for (size_t i = 0; i < msgs.size(); ++i) {
+                        RCLCPP_INFO(get_logger(), "publishing");
                         lidar_pubs[i]->publish(*msgs[i]);
+                    }
                 }));
         }
 
