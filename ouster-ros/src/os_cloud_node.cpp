@@ -91,7 +91,7 @@ class OusterCloud : public OusterProcessingNodeBase {
 
         auto proc_mask = get_parameter("proc_mask").as_string();
         RCLCPP_INFO(get_logger(),
-                    proc_mask);
+                    proc_mask.data());
         auto tokens = parse_tokens(proc_mask, '|');
 
         if (check_token(tokens, "IMU")) {
