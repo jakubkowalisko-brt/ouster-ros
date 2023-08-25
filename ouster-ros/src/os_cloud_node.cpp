@@ -90,6 +90,8 @@ class OusterCloud : public OusterProcessingNodeBase {
             use_system_default_qos ? system_default_qos : sensor_data_qos;
 
         auto proc_mask = get_parameter("proc_mask").as_string();
+        RCLCPP_INFO(get_logger(),
+                    proc_mask);
         auto tokens = parse_tokens(proc_mask, '|');
 
         if (check_token(tokens, "IMU")) {
